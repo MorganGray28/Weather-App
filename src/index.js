@@ -1,3 +1,12 @@
+// To Do:
+// - redo HTML layout (triple digit temps in current display bugs with the F/C being hidden from click)
+//     - better organization
+// - animate search form on initial search with a Heading regarding what to search
+// create svgs for each weather condition 
+// convert CSS to SCSS
+// make responsive 
+// test/deploy
+
 const domStrings = {
     form: document.querySelector('.search-form'),
     input: document.querySelector('.search-input'),
@@ -87,15 +96,7 @@ async function querySearch () {
         domStrings.input.value = '';
 
         renderWeather();
-        document.querySelector('.current-display').classList.remove('hidden');
-        document.querySelector('.current-display').classList.add('reveal-animation');
-
-        document.querySelector('.hourly-flex-container').classList.remove('hidden');
-        document.querySelector('.hourly-flex-container').classList.add('reveal-animation');
-
-        document.querySelector('.weekly-flex-container').classList.remove('hidden');
-        document.querySelector('.weekly-flex-container').classList.add('reveal-animation');
-
+        renderInitialState();
     } 
 }
 
@@ -210,6 +211,17 @@ function renderWeather () {
     clearActiveTab();
     document.getElementById('weekly-0').classList.add('weekly-active');
 
+}
+
+function renderInitialState () {
+    document.querySelector('.current-display').classList.remove('hidden');
+    document.querySelector('.current-display').classList.add('reveal-animation');
+
+    document.querySelector('.hourly-flex-container').classList.remove('hidden');
+    document.querySelector('.hourly-flex-container').classList.add('reveal-animation');
+
+    document.querySelector('.weekly-flex-container').classList.remove('hidden');
+    document.querySelector('.weekly-flex-container').classList.add('reveal-animation');
 }
 
 function clearActiveTab() {
