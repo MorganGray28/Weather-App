@@ -257,18 +257,20 @@ body {
 }
 
 .weekly-active {
+    transform: translateY(-45px);
     width: 118px;
     height:200px;
     position: relative;
-    top: 15px;
-    background: rgb(0,162,255);
+    /* top: 15px; */
+    /* background: rgb(0,162,255); */
     background: linear-gradient(0deg, rgba(0,162,255,0) 35%, #0B089A 100%);
     border-radius: 80px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    transition: all 1s, ease-in-out;
+    animation: daySlideUp .4s cubic-bezier(0, 0.1, 0.2, 0.8);
+    /* transition: all 1s, ease-in-out; */
 
 }
 
@@ -293,6 +295,36 @@ body {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
+
+@keyframes reveal {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes daySlideUp {
+    0% {
+        transform: translateY(0);
+    }
+
+    100% {
+        transform: translateY(-45px);
+    }
+}
+
+.hidden {
+    opacity: 0;
+}
+
+.reveal-animation {
+    animation: reveal .6s ease-out;
+}
+
+
 
 
 

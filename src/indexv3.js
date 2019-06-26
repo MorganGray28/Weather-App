@@ -87,6 +87,15 @@ async function querySearch () {
         domStrings.input.value = '';
 
         renderWeather();
+        document.querySelector('.current-display').classList.remove('hidden');
+        document.querySelector('.current-display').classList.add('reveal-animation');
+
+        document.querySelector('.hourly-flex-container').classList.remove('hidden');
+        document.querySelector('.hourly-flex-container').classList.add('reveal-animation');
+
+        document.querySelector('.weekly-flex-container').classList.remove('hidden');
+        document.querySelector('.weekly-flex-container').classList.add('reveal-animation');
+
     } 
 }
 
@@ -470,4 +479,3 @@ function convertToFahrenheit() {
     }
     renderWeeklyTemperatures();
 }
-
