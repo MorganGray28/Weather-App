@@ -50,9 +50,6 @@ const state = {
     }
 };
 
-// var unitType = state.tempState.unitState;
-
-
 // key is to pass the tempUnitState in as a 'type' argument when rendering each individual sections, which will instruct which array to pull from
 // start out by default, showing day0 for hourly and weekly, then click events for days of week will change the day State
 
@@ -141,7 +138,8 @@ function mphToKmhConvert(speed) {
 
 function renderCurrentTemperatures(data, day) {
     var dayDisplayed = state.tempState.dayDisplayed;
-    domStrings.conditionSummary.textContent = getCurrWeather(data.icon);
+    domStrings.conditionSummary.textContent = getCurrWeather(data.icon)[0];
+    document.querySelector('.curr-condition-icon').src = `../img/${getCurrWeather(data.icon)[1]}.svg`;
 
     // state.tempState[state.tempState.unitState].daily
 
@@ -173,6 +171,9 @@ function renderWeeklyTemperatures () {
     for (var i = 0; i < 7; i++) {
         document.getElementById('high-' + i).textContent = Math.round(state.tempState[state.tempState.unitState].daily.highTemp[i]) + '°';
         document.getElementById('low-' + i).textContent = Math.round(state.tempState[state.tempState.unitState].daily.lowTemp[i]) + '°';
+
+        document.getElementById('weekly__icon--' + i).src = `../img/${state.search.results.data.daily.data[i].icon}.svg`;
+        // console.log(state.search.results.data.daily.data[i].icon);
     }
 }
 
@@ -187,7 +188,8 @@ function renderWeather () {
     state.tempState.dayDisplayed = 0;
 
     // display the current Condition Summary
-    domStrings.conditionSummary.textContent = getCurrWeather(result.data.currently.icon);
+    domStrings.conditionSummary.textContent = getCurrWeather(result.data.currently.icon)[0];
+    document.querySelector('.curr-condition-icon').src = `../img/${getCurrWeather(result.data.currently.icon)[1]}.svg`;
 
     // Display the Weekly Forecast
     result.data.daily.data.slice(0, 7).forEach(function(cur, index) {
@@ -327,31 +329,44 @@ document.querySelector('.weekly-container').addEventListener('click', function(e
 });
 
 // var weatherIcon;
-var weatherSummary;
+var weatherSummary = [];
 function getCurrWeather(icon) {
     switch(icon){
         case 'clear-day':
+            weatherSummary[0] = 'Clear';
+            weatherSummary[1] = icon;
+
         case 'clear-night':
-            weatherSummary = 'Clear';
+            weatherSummary[0] = 'Clear';
+            weatherSummary[1] = icon;
             break;
         case 'rain':
-            weatherSummary = 'Rain';
+            weatherSummary[0] = 'Rain';
+            weatherSummary[1] = icon;
             break;
         case 'snow': 
-            weatherSummary = 'Snow';
+            weatherSummary[0] = 'Snow';
+            weatherSummary[1] = icon;
             break;
         case 'wind':
-            weatherSummary = 'Windy';
+            weatherSummary[0] = 'Windy';
+            weatherSummary[1] = icon;
             break;
         case 'fog':
-            weatherSummary = 'Foggy';
+            weatherSummary[0] = 'Foggy';
+            weatherSummary[1] = icon;
             break;
         case 'cloudy':
-            weatherSummary = 'Cloudy';
+            weatherSummary[0] = 'Cloudy';
+            weatherSummary[1] = icon;
             break;
         case 'partly-cloudy-day':
+            weatherSummary[0] = 'Partly Cloudy';
+            weatherSummary[1] = icon;
+            break;
         case 'partly-cloudy-night':
-            weatherSummary = 'Partly Cloudy';
+            weatherSummary[0] = 'Partly Cloudy';
+            weatherSummary[1] = icon;
             break;   
     }
     return weatherSummary;
@@ -378,7 +393,7 @@ function setDayWeek(time) {
 }
 
 function hourlyPagination (res, day = 1) {
-    var arr = res.data.hourly.data
+    var arr = res.data.hourly.data;
     var start, end, hourArray, tempArray;
 
     // In order to find which index of our hourly array of data marks the start of day 2, we'll use the getHours() on the formatted time of the first index
@@ -397,6 +412,7 @@ function hourlyPagination (res, day = 1) {
     tempArray = state.tempState[state.tempState.unitState].hourly.temp.slice(start, end);
     
     var triHourlyTime = [];
+    // var triHourlyIcon = [];
     var triHourlyTemp = [];
     for (var i = 0; i < hourArray.length; i += 3) {
         triHourlyTime.push(hourArray[i]);
@@ -423,6 +439,7 @@ function hourlyPagination (res, day = 1) {
 
         // document.getElementById('hour-' + ind).childNodes[3].textContent = Math.round(cur.apparentTemperature);
         document.getElementById('hour-' + ind).childNodes[5].textContent = hourFormatted;
+        document.getElementById('hour__icon--' + ind).src = `../img/${cur.icon}.svg`;
 
     });
 }
