@@ -14,6 +14,10 @@ const domStrings = {
     conditionSummary: document.querySelector('.curr-condition-sum'),
     currentTemp: document.querySelector('#temp')
 };
+
+// unitState is passed in as a 'type' parameter when rendering each individual sections, which will instruct which array to pull from, metric or usUnits
+
+// start out by default, showing day0 for hourly and weekly, then click events for days of week will change the day State
 const state = {
     tempState: {
         unitState: 'usUnits',
@@ -49,12 +53,6 @@ const state = {
     }
 };
 
-// key is to pass the tempUnitState in as a 'type' argument when rendering each individual sections, which will instruct which array to pull from
-// start out by default, showing day0 for hourly and weekly, then click events for days of week will change the day State
-
-// have separate functions for rendering temperatures and wind speed, than icons
-// each time we click a day of the week, it passes in the tempUnitState as the type
-
 class Search {
     constructor(query) {
         this.query = query;
@@ -88,10 +86,11 @@ async function querySearch () {
 
         renderTempState ();
         
-        // Clear the Search Input
+        // Clear the Search Input after each search
         domStrings.input.value = '';
 
         renderWeather();
+       
         renderInitialState();
     } 
 }
@@ -128,8 +127,8 @@ function renderTempState() {
     }
 }
 
-function convertToCels (data) {
-    return (data - 32) / 1.8
+function convertToCels (temp) {
+    return (temp - 32) / 1.8
 }
 function mphToKmhConvert(speed) {
     return speed * 1.60934;
@@ -137,20 +136,23 @@ function mphToKmhConvert(speed) {
 
 function renderCurrentTemperatures(data, day) {
     var dayDisplayed = state.tempState.dayDisplayed;
+
+    // displays the condition of the day being displayed, ex: "Clear", "Partly Cloudy"
     domStrings.conditionSummary.textContent = getCurrWeather(data.icon)[0];
     document.querySelector('.curr-condition-icon').src = `./img/${getCurrWeather(data.icon)[1]}.svg`;
 
-    // state.tempState[state.tempState.unitState].daily
-
+    // Use 'Current Weather' data if we're displaying the first day, not the 'Daily Weather' data for the first day, this way it shows the most up-to-date weather conditions instead of a daily summary of today's weather
     if (dayDisplayed === 0) {
         document.getElementById('temp').textContent = Math.round(day.temp);
         document.getElementById('curr-wind').textContent = Math.round(day.windSpeed);
 
+    // Use 'Daily Weather' data for all the other days
     } else if (dayDisplayed > 0 && dayDisplayed < 7) {
         document.getElementById('temp').textContent = Math.round(day.highTemp[dayDisplayed]);
         document.getElementById('curr-wind').textContent = Math.round(day.windSpeed[dayDisplayed]);
     }
 
+    // If there's a different type of precipitation than rain, such as snow, show "Chance of Snow", else, use rain as default
     if (data.precipType && data.precipType !== 'rain') {
         document.getElementById('curr-precip').textContent = `Chance of ${data.precipType}: ${Math.round(data.precipProbability * 100)}%`;
     } else {
@@ -172,7 +174,6 @@ function renderWeeklyTemperatures () {
         document.getElementById('low-' + i).textContent = Math.round(state.tempState[state.tempState.unitState].daily.lowTemp[i]) + '°';
 
         document.getElementById('weekly__icon--' + i).src = `./img/${state.search.results.data.daily.data[i].icon}.svg`;
-        // console.log(state.search.results.data.daily.data[i].icon);
     }
 }
 
@@ -190,13 +191,11 @@ function renderWeather () {
     domStrings.conditionSummary.textContent = getCurrWeather(result.data.currently.icon)[0];
     document.querySelector('.curr-condition-icon').src = `./img/${getCurrWeather(result.data.currently.icon)[1]}.svg`;
 
-    // Display the Weekly Forecast
+    // Display the Days for the Weekly Forecast
     result.data.daily.data.slice(0, 7).forEach(function(cur, index) {
         var time = setTime(cur.time, result.data.offset);
+
         document.getElementById('day-' + index).innerHTML = setDayWeek(time);
-        
-        // Still need to display icon based on cur.icon
-        // document.getElementById('icon-' + index).img.src = cur.icon + '.svg'; ??? 
     })
 
     // Display Current Day's Forecast
@@ -215,12 +214,15 @@ function renderWeather () {
 }
 
 function renderInitialState () {
+    // animate the search form
+    document.querySelector('.search').classList.add('search-animation');
+    document.querySelector('.header__h1').classList.add('hidden');
+
+    // UI fade-in animation
     document.querySelector('.current-display').classList.remove('hidden');
     document.querySelector('.current-display').classList.add('reveal-animation');
-
     document.querySelector('.hourly-flex-container').classList.remove('hidden');
     document.querySelector('.hourly-flex-container').classList.add('reveal-animation');
-
     document.querySelector('.weekly-flex-container').classList.remove('hidden');
     document.querySelector('.weekly-flex-container').classList.add('reveal-animation');
 }
@@ -238,15 +240,15 @@ function clearActiveTab() {
 // Search Event Listener
 domStrings.form.addEventListener('submit', (e) => {
     e.preventDefault();
-    querySearch();
+    querySearch();   
 });
 
 // Weekly Forecast Event Listener
 document.querySelector('.weekly-container').addEventListener('click', function(e) {
     const dailyData = state.search.results.data.daily.data;
     const dailyTemp = state.tempState[state.tempState.unitState].daily;
-    // Clear the active Tab from all days, then add to clicked container 
 
+    // Clear the active Tab from all days, then add to clicked container 
     if (e.target.closest('#weekly-0')) {
         if (!(document.getElementById('weekly-0').classList.contains('weekly-active'))) {
             clearActiveTab();

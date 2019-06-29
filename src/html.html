@@ -10,8 +10,10 @@
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 </head>
 <body>
-    <div class="container">
-        <div class="header">
+
+    <header class="header">
+        <div class="search">
+            <h1 class="header__h1">Find your local weather</h1>
             <form class="search-form">
                 <input type="text" class="search-input" placeholder="City, State" spellcheck="false">
                 <button class="search-btn">
@@ -22,186 +24,178 @@
                 </button>
             </form>
         </div>
-        
-        <div class="current-display hidden">
+    </header>
+    
+    <div class="current-display hidden">
 
-            <div class="left">
-                <div class="curr-condition">
-                    <img class="curr-condition-icon" src="" alt="">
-                    <p class="curr-condition-sum">Partly Cloudy</p>
-                </div>
-
-                <div class="curr-temp">
-                    <div id="temp">68</div>
-                    <span class="temp-units units-active" id="faren">°F</span>
-                    <span>|</span>
-                    <span class="temp-units" id="celsius">°C</span>
-                </div>      
+        <div class="left">
+            <div class="curr-condition">
+                <img class="curr-condition-icon" src="" alt="">
+                <p class="curr-condition-sum">Partly Cloudy</p>
             </div>
 
-            <div class="right">
-                <div class="curr-address"></div>
-                <div class="curr-conditions">
-                    <div id="curr-precip">Chance of Rain:</div>
-                    <div id="curr-hum">Humidity: </div>
-                    <div>Wind Speed: 
-                        <span id="curr-wind"></span>
-                        <span id="speed-unit"></span>
-                    </div>
-                </div>
-            </div>
-
+            <div class="curr-temp">
+                <div id="temp">68</div>
+                <span class="temp-units units-active" id="faren">°F</span>
+                <span>|</span>
+                <span class="temp-units" id="celsius">°C</span>
+            </div>      
         </div>
 
-        <div class="hourly-flex-container hidden">
-            <div class="hourly-container">
-                <div class="hourly" id="hour-0">     
-                    <div class="hourly-icon">
-                        <img id="hour__icon--0" src="./img/clear-day.svg" alt="">              
-                    </div>
-                    <div class="hourly-temp">68</div>
-                    <div class="hourly-time">12AM</div>
-                </div>
-
-                <div class="hourly" id="hour-1">
-                    <div class="hourly-icon">
-                        <img id="hour__icon--1" src="./img/clear-day.svg" alt="">             
-                    </div>
-                    <div class="hourly-temp">68°</div>
-                    <div class="hourly-time">3AM</div>
-                </div>
-
-                <div class="hourly" id="hour-2">
-                    <div class="hourly-icon">
-                        <img id="hour__icon--2" src="./img/clear-day.svg" alt="">
-                    </div>
-                    <div class="hourly-temp">68°</div>
-                    <div class="hourly-time">6AM</div>
-                </div>
-
-                <div class="hourly" id="hour-3">
-                    <div class="hourly-icon">
-                        <img id="hour__icon--3" src="./img/clear-day.svg" alt="">
-                    </div>
-                    <div class="hourly-temp">68°</div>
-                    <div class="hourly-time">9AM</div>
-                </div>
-
-                <div class="hourly" id="hour-4">
-                    <div class="hourly-icon">
-                        <img id="hour__icon--4" src="./img/clear-day.svg" alt="">
-                    </div>
-                    <div class="hourly-temp">68°</div>
-                    <div class="hourly-time">12PM</div>
-                </div>
-
-                <div class="hourly" id="hour-5">
-                    <div class="hourly-icon">
-                        <img id="hour__icon--5" src="./img/clear-day.svg" alt="">
-                    </div>
-                    <div class="hourly-temp">68°</div>
-                    <div class="hourly-time">3PM</div>
-                </div>
-
-                <div class="hourly" id="hour-6">
-                    <div class="hourly-icon">
-                        <img id="hour__icon--6" src="./img/clear-day.svg" alt="">
-                    </div>
-                    <div class="hourly-temp">68°</div>
-                    <div class="hourly-time">6PM</div>
-                </div>
-
-                <div class="hourly" id="hour-7">
-                    <div class="hourly-icon">
-                        <img id="hour__icon--7" src="./img/clear-day.svg" alt="">
-                    </div>
-                    <div class="hourly-temp">68°</div>
-                    <div class="hourly-time">9PM</div>
-                </div>
-                <div class="hourly" id="hour-8">
-                    <div class="hourly-icon">
-                        <img id="hour__icon--8" src="./img/clear-day.svg" alt="">
-                    </div>
-                    <div class="hourly-temp">68°</div>
-                    <div class="hourly-time">12AM</div>
+        <div class="right">
+            <div class="curr-address"></div>
+            <div class="curr-conditions">
+                <div id="curr-precip">Chance of Rain:</div>
+                <div id="curr-hum">Humidity: </div>
+                <div>Wind Speed: 
+                    <span id="curr-wind"></span>
+                    <span id="speed-unit"></span>
                 </div>
             </div>
         </div>
 
-        <div class="weekly-flex-container hidden">
-            <div class="weekly-container">
-                <div class="weekly weekly-active" id="weekly-0">
-                    <div class="weekly-icon">
-                        <img id="weekly__icon--0" src="./img/clear-day.svg" alt="">
-                    </div>
-                    <div class="weekly-temp-high" id="high-0">73°</div>
-                    <div class="weekly-day" id="day-0">Fri</div>
-                    <div class="weekly-temp-low" id="low-0">68°</div>
-                </div>
-                <div class="weekly" id="weekly-1">
-                    <div class="weekly-icon">
-                        <img id="weekly__icon--1" src="./img/clear-day.svg" alt="">
-                    </div>
-                    <div class="weekly-temp-high" id="high-1">73°</div>
-                    <div class="weekly-day" id="day-1">Sat</div>
-                    <div class="weekly-temp-low" id="low-1">68°</div>
-                </div>
+    </div>
 
-                <div class="weekly" id="weekly-2">
-                    <div class="weekly-icon">
-                        <img id="weekly__icon--2" src="./img/clear-day.svg" alt="">
-                    </div>
-                    <div class="weekly-temp-high" id="high-2">73°</div>
-                    <div class="weekly-day" id="day-2">Sun</div>
-                    <div class="weekly-temp-low" id="low-2">68°</div>
+    <div class="hourly-flex-container hidden">
+        <div class="hourly-container">
+            <div class="hourly" id="hour-0">     
+                <div class="hourly-icon">
+                    <img id="hour__icon--0" src="" alt="">              
                 </div>
+                <div class="hourly-temp">68</div>
+                <div class="hourly-time">12AM</div>
+            </div>
 
-                <div class="weekly" id="weekly-3">
-                    <div class="weekly-icon">
-                        <img id="weekly__icon--3" src="./img/clear-day.svg" alt="">
-                    </div>
-                    <div class="weekly-temp-high" id="high-3">73°</div>
-                    <div class="weekly-day" id="day-3">Mon</div>
-                    <div class="weekly-temp-low" id="low-3">68°</div>
+            <div class="hourly" id="hour-1">
+                <div class="hourly-icon">
+                    <img id="hour__icon--1" src="" alt="">             
                 </div>
+                <div class="hourly-temp">68°</div>
+                <div class="hourly-time">3AM</div>
+            </div>
 
-                <div class="weekly" id="weekly-4">
-                    <div class="weekly-icon">
-                        <img id="weekly__icon--4" src="./img/clear-day.svg" alt="">
-                    </div>
-                    <div class="weekly-temp-high" id="high-4">73°</div>
-                    <div class="weekly-day" id="day-4">Tue</div>
-                    <div class="weekly-temp-low" id="low-4">68°</div>
+            <div class="hourly" id="hour-2">
+                <div class="hourly-icon">
+                    <img id="hour__icon--2" src="" alt="">
                 </div>
+                <div class="hourly-temp">68°</div>
+                <div class="hourly-time">6AM</div>
+            </div>
 
-                <div class="weekly" id="weekly-5">
-                    <div class="weekly-icon">
-                        <img id="weekly__icon--5" src="./img/clear-day.svg" alt="">
-                    </div>
-                    <div class="weekly-temp-high" id="high-5">73°</div>
-                    <div class="weekly-day" id="day-5">Wed</div>
-                    <div class="weekly-temp-low" id="low-5">68°</div>
+            <div class="hourly" id="hour-3">
+                <div class="hourly-icon">
+                    <img id="hour__icon--3" src="" alt="">
                 </div>
+                <div class="hourly-temp">68°</div>
+                <div class="hourly-time">9AM</div>
+            </div>
 
-                <div class="weekly" id="weekly-6">
-                    <div class="weekly-icon">
-                        <img id="weekly__icon--6" src="./img/clear-day.svg" alt="">
-                    </div>
-                    <div class="weekly-temp-high" id="high-6">73°</div>
-                    <div class="weekly-day" id="day-6">Thur</div>
-                    <div class="weekly-temp-low" id="low-6">68°</div>
+            <div class="hourly" id="hour-4">
+                <div class="hourly-icon">
+                    <img id="hour__icon--4" src="" alt="">
                 </div>
-                <!-- <div class="weekly" id="weekly-7">
-                    <div class="weekly-icon">
-                    </div>
-                    <div class="weekly-temp-high" id="high-7">73°</div>
-                    <div class="weekly-day" id="day-7">Fri</div>
-                    <div class="weekly-temp-low" id="low-7">68°</div>
-                    
-                </div> -->
+                <div class="hourly-temp">68°</div>
+                <div class="hourly-time">12PM</div>
+            </div>
+
+            <div class="hourly" id="hour-5">
+                <div class="hourly-icon">
+                    <img id="hour__icon--5" src="" alt="">
+                </div>
+                <div class="hourly-temp">68°</div>
+                <div class="hourly-time">3PM</div>
+            </div>
+
+            <div class="hourly" id="hour-6">
+                <div class="hourly-icon">
+                    <img id="hour__icon--6" src="" alt="">
+                </div>
+                <div class="hourly-temp">68°</div>
+                <div class="hourly-time">6PM</div>
+            </div>
+
+            <div class="hourly" id="hour-7">
+                <div class="hourly-icon">
+                    <img id="hour__icon--7" src="" alt="">
+                </div>
+                <div class="hourly-temp">68°</div>
+                <div class="hourly-time">9PM</div>
+            </div>
+            <div class="hourly" id="hour-8">
+                <div class="hourly-icon">
+                    <img id="hour__icon--8" src="" alt="">
+                </div>
+                <div class="hourly-temp">68°</div>
+                <div class="hourly-time">12AM</div>
             </div>
         </div>
-    </div> 
+    </div>
+
+    <div class="weekly-flex-container hidden">
+        <div class="weekly-container">
+            <div class="weekly weekly-active" id="weekly-0">
+                <div class="weekly-icon">
+                    <img id="weekly__icon--0" src="" alt="">
+                </div>
+                <div class="weekly-temp-high" id="high-0">73°</div>
+                <div class="weekly-day" id="day-0">Fri</div>
+                <div class="weekly-temp-low" id="low-0">68°</div>
+            </div>
+            <div class="weekly" id="weekly-1">
+                <div class="weekly-icon">
+                    <img id="weekly__icon--1" src="" alt="">
+                </div>
+                <div class="weekly-temp-high" id="high-1">73°</div>
+                <div class="weekly-day" id="day-1">Sat</div>
+                <div class="weekly-temp-low" id="low-1">68°</div>
+            </div>
+
+            <div class="weekly" id="weekly-2">
+                <div class="weekly-icon">
+                    <img id="weekly__icon--2" src="" alt="">
+                </div>
+                <div class="weekly-temp-high" id="high-2">73°</div>
+                <div class="weekly-day" id="day-2">Sun</div>
+                <div class="weekly-temp-low" id="low-2">68°</div>
+            </div>
+
+            <div class="weekly" id="weekly-3">
+                <div class="weekly-icon">
+                    <img id="weekly__icon--3" src="" alt="">
+                </div>
+                <div class="weekly-temp-high" id="high-3">73°</div>
+                <div class="weekly-day" id="day-3">Mon</div>
+                <div class="weekly-temp-low" id="low-3">68°</div>
+            </div>
+
+            <div class="weekly" id="weekly-4">
+                <div class="weekly-icon">
+                    <img id="weekly__icon--4" src="" alt="">
+                </div>
+                <div class="weekly-temp-high" id="high-4">73°</div>
+                <div class="weekly-day" id="day-4">Tue</div>
+                <div class="weekly-temp-low" id="low-4">68°</div>
+            </div>
+
+            <div class="weekly" id="weekly-5">
+                <div class="weekly-icon">
+                    <img id="weekly__icon--5" src="" alt="">
+                </div>
+                <div class="weekly-temp-high" id="high-5">73°</div>
+                <div class="weekly-day" id="day-5">Wed</div>
+                <div class="weekly-temp-low" id="low-5">68°</div>
+            </div>
+
+            <div class="weekly" id="weekly-6">
+                <div class="weekly-icon">
+                    <img id="weekly__icon--6" src="" alt="">
+                </div>
+                <div class="weekly-temp-high" id="high-6">73°</div>
+                <div class="weekly-day" id="day-6">Thur</div>
+                <div class="weekly-temp-low" id="low-6">68°</div>
+            </div>
+        </div>
+    </div>
 
     <script src="./js/index.js"></script>
 </body>
