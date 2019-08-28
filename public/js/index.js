@@ -1,7 +1,6 @@
 // To Do:
 // - redo HTML layout (triple digit temps in current display bugs with the F/C being hidden from click)
 //     - better organization
-// - animate search form on initial search with a Heading regarding what to search
 // convert CSS to SCSS
 // make responsive 
 // test/deploy
@@ -59,16 +58,13 @@ class Search {
     }
 
     async getResults() {
-        const keyGeo = 'AIzaSyDfj7Ugrp6dIPWJbwZbTMqrHZZe04c6GrU';
-        const keyWeather = '5d3b425be08c0ad09c647b5bc9ecc667';
         try {
-            const res = await axios(`https://maps.googleapis.com/maps/api/geocode/json?address=${this.query}&key=${keyGeo}`);
+            const res = await axios(`geolocation?location=${this.query}`);
             const locationLatLong = res.data.results[0].geometry.location
             const lat = locationLatLong.lat;
             const long = locationLatLong.lng;
             this.formattedAddress = res.data.results[0].formatted_address;
-
-            this.results = await axios(`https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/${keyWeather}/${lat},${long}?exclude=minutely&extend=hourly`);
+            this.results = await axios(`weather?lat=${lat}&long=${long}`);
         }
         catch (error) {
             console.log(error);
