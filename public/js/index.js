@@ -217,10 +217,12 @@ function renderInitialState () {
     // UI fade-in animation
     document.querySelector('.current-display').classList.remove('hidden');
     document.querySelector('.current-display').classList.add('reveal-animation');
-    document.querySelector('.hourly-flex-container').classList.remove('hidden');
-    document.querySelector('.hourly-flex-container').classList.add('reveal-animation');
-    document.querySelector('.weekly-flex-container').classList.remove('hidden');
-    document.querySelector('.weekly-flex-container').classList.add('reveal-animation');
+    document.querySelector('.hourly-container').classList.remove('hidden');
+
+    document.querySelector('.hourly-container').classList.add('reveal-animation');
+
+    document.querySelector('.weekly-container').classList.remove('hidden');
+    document.querySelector('.weekly-container').classList.add('reveal-animation');
 }
 
 function clearActiveTab() {

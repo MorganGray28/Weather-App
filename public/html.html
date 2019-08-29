@@ -10,54 +10,52 @@
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 </head>
 <body>
-
-    <header class="header">
-        <div class="search">
-            <h1 class="header__h1">Find your local weather</h1>
-            <form class="search-form">
-                <input type="text" class="search-input" name="location" placeholder="City, State" spellcheck="false">
-                <button class="search-btn">
-                    <svg width="30" height="30" class="search-icon" viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M16.4335 18.9938L18.9935 16.4338L29.2336 26.6739C29.9405 27.3808 29.9405 28.5269 29.2336 29.2339C28.5266 29.9408 27.3805 29.9408 26.6736 29.2339L16.4335 18.9938Z"/>
-                    <path fill-rule="evenodd" clip-rule="evenodd" d="M19.3138 19.3138C23.7321 14.8955 23.7321 7.73202 19.3138 3.31372C14.8955 -1.10457 7.73202 -1.10457 3.31372 3.31372C-1.10457 7.73202 -1.10457 14.8955 3.31372 19.3138C7.73202 23.7321 14.8955 23.7321 19.3138 19.3138ZM17.3934 17.3938C20.7513 14.0359 20.7513 8.59165 17.3934 5.23374C14.0354 1.87584 8.59121 1.87584 5.2333 5.23374C1.8754 8.59165 1.8754 14.0359 5.2333 17.3938C8.59121 20.7517 14.0354 20.7517 17.3934 17.3938Z"/>
-                    </svg>           
-                </button>
-            </form>
-        </div>
-    </header>
-    
-    <div class="current-display hidden">
-
-        <div class="left">
-            <div class="curr-condition">
-                <img class="curr-condition-icon" src="" alt="">
-                <p class="curr-condition-sum">Partly Cloudy</p>
+    <div id="container">
+        <header class="header">
+            <div class="search">
+                <h1 class="header__h1">Find your local weather</h1>
+                <form class="search-form">
+                    <input type="text" class="search-input" name="location" placeholder="City, State" spellcheck="false" autocomplete="off">
+                    <button class="search-btn">
+                        <svg width="30" height="30" class="search-icon" viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M16.4335 18.9938L18.9935 16.4338L29.2336 26.6739C29.9405 27.3808 29.9405 28.5269 29.2336 29.2339C28.5266 29.9408 27.3805 29.9408 26.6736 29.2339L16.4335 18.9938Z"/>
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M19.3138 19.3138C23.7321 14.8955 23.7321 7.73202 19.3138 3.31372C14.8955 -1.10457 7.73202 -1.10457 3.31372 3.31372C-1.10457 7.73202 -1.10457 14.8955 3.31372 19.3138C7.73202 23.7321 14.8955 23.7321 19.3138 19.3138ZM17.3934 17.3938C20.7513 14.0359 20.7513 8.59165 17.3934 5.23374C14.0354 1.87584 8.59121 1.87584 5.2333 5.23374C1.8754 8.59165 1.8754 14.0359 5.2333 17.3938C8.59121 20.7517 14.0354 20.7517 17.3934 17.3938Z"/>
+                        </svg>           
+                    </button>
+                </form>
             </div>
+        </header>
+        <div class="curr-address"></div>
+        
+        <div class="current-display hidden">
+            <div class="left">
+                <div class="curr-condition">
+                    <img class="curr-condition-icon" src="" alt="">
+                    <p class="curr-condition-sum">Partly Cloudy</p>
+                </div>
 
-            <div class="curr-temp">
-                <div id="temp">68</div>
-                <span class="temp-units units-active" id="faren">°F</span>
-                <span>|</span>
-                <span class="temp-units" id="celsius">°C</span>
-            </div>      
-        </div>
-
-        <div class="right">
-            <div class="curr-address"></div>
-            <div class="curr-conditions">
-                <div id="curr-precip">Chance of Rain:</div>
-                <div id="curr-hum">Humidity: </div>
-                <div>Wind Speed: 
-                    <span id="curr-wind"></span>
-                    <span id="speed-unit"></span>
+                <div class="curr-temp">
+                    <div id="temp">68</div>
+                    <div class="curr-temp_units">
+                        <span class="temp-units units-active" id="faren">°F</span>
+                        <span>|</span>
+                        <span class="temp-units" id="celsius">°C</span>
+                    </div>
+                </div>      
+            </div>
+            <div class="right">
+                <div class="curr-conditions">
+                    <div id="curr-precip">Chance of Rain:</div>
+                    <div id="curr-hum">Humidity: </div>
+                    <div>Wind Speed: 
+                        <span id="curr-wind"></span>
+                        <span id="speed-unit"></span>
+                    </div>
                 </div>
             </div>
         </div>
 
-    </div>
-
-    <div class="hourly-flex-container hidden">
-        <div class="hourly-container">
+        <div class="hourly-container hidden">
             <div class="hourly" id="hour-0">     
                 <div class="hourly-icon">
                     <img id="hour__icon--0" src="" alt="">              
@@ -129,10 +127,8 @@
                 <div class="hourly-time">12AM</div>
             </div>
         </div>
-    </div>
 
-    <div class="weekly-flex-container hidden">
-        <div class="weekly-container">
+        <div class="weekly-container hidden">
             <div class="weekly weekly-active" id="weekly-0">
                 <div class="weekly-icon">
                     <img id="weekly__icon--0" src="" alt="">
