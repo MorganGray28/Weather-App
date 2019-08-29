@@ -175,7 +175,6 @@ function renderWeeklyTemperatures () {
 
 function renderWeather () {
     const result = state.search.results;
-    console.log(result);
 
     // display the location
     domStrings.address.textContent = state.search.formattedAddress;
