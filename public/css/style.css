@@ -254,9 +254,7 @@ body {
 .weekly-day {
   font-weight: 300;
   font-size: 31px;
-  background: -webkit-linear-gradient(white, #bebebe);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent; }
+  color: white; }
 
 .hidden {
   opacity: 0;
