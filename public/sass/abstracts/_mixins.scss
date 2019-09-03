@@ -1,0 +1,9 @@
+@mixin bp($dev) {
+    @if $dev == tab-port {
+        @media (max-width: 900px) { @content };
+    }
+
+    @if $dev == phone {
+        @media (max-width: 600px) { @content };
+    }
+}

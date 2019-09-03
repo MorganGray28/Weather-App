@@ -16,8 +16,12 @@
   100% {
     transform: translateY(-180px); } }
 
-body {
-  font-family: 'Lato'; }
+.reveal-animation {
+  animation: reveal .8s ease-out; }
+
+.search-animation {
+  animation: searchSlideUp .8s ease;
+  animation-fill-mode: forwards; }
 
 html,
 body {
@@ -29,62 +33,12 @@ body {
   min-height: 100vh;
   background: linear-gradient(335.58deg, #00050f -1.43%, #0c387a 103.38%); }
 
-.header {
-  height: 50px;
-  display: flex;
-  justify-content: center;
-  align-items: center; }
+body {
+  font-family: 'Lato'; }
 
-.search {
-  position: relative;
-  top: 200px;
-  /* animation: searchSlideUp .75s ease;
-    animation-fill-mode: forwards; */ }
-
-.search h1 {
-  width: 500px;
-  color: #d6d6d6;
-  font-weight: 100;
-  font-size: 40px;
-  /* visibility: hidden; */
-  text-align: center; }
-
-.search-input {
-  width: 500px;
-  height: 45px;
-  font-weight: 300;
-  font-family: "Lato";
-  box-sizing: border-box;
-  padding-left: 18px;
-  border-radius: 57px;
-  border: 1px solid white;
-  background-color: rgba(0, 0, 0, 0);
-  font-size: 24px;
-  color: white; }
-
-.search-btn {
-  background-color: rgba(0, 0, 0, 0);
-  border: none; }
-
-.search-btn:focus {
-  outline: none; }
-
-.search-icon {
-  height: 25px;
-  width: 25px;
-  fill: #0979CF;
-  position: relative;
-  right: 57px;
-  top: 2px;
-  cursor: pointer; }
-
-.search-input:focus {
-  outline: none; }
-
-.search-input::placeholder {
-  font-weight: 100;
-  color: #d6d6d6;
-  letter-spacing: 0.03em; }
+.hidden {
+  opacity: 0;
+  display: none; }
 
 .curr-address {
   width: 70%;
@@ -110,24 +64,12 @@ body {
   display: flex;
   justify-content: center;
   align-items: center; }
+  .curr-condition-sum {
+    margin: 0 0 0 25px;
+    color: white;
+    font-size: 48px;
+    font-weight: 100; }
 
-.curr-condition-sum {
-  margin: 0 0 0 25px;
-  color: white;
-  font-size: 48px;
-  font-weight: 100; }
-
-/* 
-.curr-temp {
-    display: flex;
-}
-
-.curr-temp h3 {
-    margin: 0;
-    font-size: 150px;
-    font-weight: 100;
-}
-*/
 #temp {
   margin: 0;
   font-size: 150px;
@@ -154,8 +96,7 @@ body {
 
 /* Right Side of Current Display */
 .right {
-  width: 50%;
-  /* background-color: rgba(0, 0, 0, .5); */ }
+  width: 50%; }
 
 .curr-conditions {
   font-weight: 100;
@@ -166,13 +107,11 @@ body {
 .curr-conditions div {
   padding-top: 27px; }
 
-/* Hourly conditions */
 .hourly-container {
   box-sizing: border-box;
   padding-bottom: 20px;
   width: 100%;
   padding: 0 5% 25px 5%;
-  /* background-color: rgba(0, 0, 0, .5); */
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -181,7 +120,6 @@ body {
 .hourly {
   width: 120px;
   height: 90%;
-  /* background-color: #0A316A; */
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -203,7 +141,57 @@ body {
   height: 50px;
   width: 50px; }
 
-/* Bottom Weekly Forecast */
+.header {
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+
+.search {
+  position: relative;
+  top: 200px;
+  z-index: 40; }
+  .search h1 {
+    width: 500px;
+    color: #d6d6d6;
+    font-weight: 100;
+    font-size: 40px;
+    text-align: center; }
+
+.search-input {
+  width: 500px;
+  height: 45px;
+  font-weight: 300;
+  font-family: "Lato";
+  box-sizing: border-box;
+  padding-left: 18px;
+  border-radius: 57px;
+  border: 1px solid white;
+  background-color: rgba(0, 0, 0, 0);
+  font-size: 24px;
+  color: white; }
+  .search-input:focus {
+    outline: none; }
+  .search-input::placeholder {
+    font-weight: 100;
+    color: #d6d6d6;
+    letter-spacing: 0.03em; }
+
+.search-btn {
+  background-color: rgba(0, 0, 0, 0);
+  border: none; }
+  .search-btn:focus {
+    outline: none; }
+
+.search-icon {
+  height: 25px;
+  width: 25px;
+  fill: #0979CF;
+  position: relative;
+  right: 57px;
+  top: 2px;
+  cursor: pointer; }
+
 .weekly-container {
   width: 100%;
   min-height: 280px;
@@ -255,14 +243,3 @@ body {
   font-weight: 300;
   font-size: 31px;
   color: white; }
-
-.hidden {
-  opacity: 0;
-  display: none; }
-
-.reveal-animation {
-  animation: reveal .8s ease-out; }
-
-.search-animation {
-  animation: searchSlideUp .8s ease;
-  animation-fill-mode: forwards; }

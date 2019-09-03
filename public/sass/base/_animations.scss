@@ -27,3 +27,12 @@
         transform: translateY(-180px);
     }
 }
+
+.reveal-animation {
+    animation: reveal .8s ease-out;
+}
+
+.search-animation {
+    animation: searchSlideUp .8s ease;
+    animation-fill-mode: forwards;
+}

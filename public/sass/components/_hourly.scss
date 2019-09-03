@@ -1,0 +1,35 @@
+.hourly-container {
+    box-sizing: border-box;
+    padding-bottom: 20px;
+    width: 100%;
+    padding: 0 5% 25px 5%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.hourly {
+    width: 120px;
+    height: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.hourly-temp {
+    font-weight: 300;
+    font-size: 25px;
+    color: #D2EFFF;
+}
+.hourly-time {
+    font-style: normal;
+    font-weight: 300;
+    font-size: 21px;
+    color: white;
+    padding-top: 7px;
+}
+.hourly-icon img {
+    height: 50px;
+    width: 50px;
+}
