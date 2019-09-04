@@ -22,33 +22,20 @@
 
 ![Screenshot of weather forecast example](/public/img/Screenshot.png)
 
-## Table of Contents
-- [Development Setup](#development-setup)
+## API Setup
+You'll need two API keys to get started, one for Google's Geocoding API to get lat/long coordinates, then one for Dark Sky's Weather API. 
 
-
-
-## Development Setup
-Install the Dependencies
-```sh
-npm install
-```
-
-Get a <a href="https://developers.google.com/maps/documentation/geocoding/start" target="_blank">Google Geocoding</a> API Key
-
-Sign up for a free <a href="https://darksky.net/dev" target="_blank">Dark Sky</a> API Key
-
-Create a file named .env and add:
-
+- Get a <a href="https://developers.google.com/maps/documentation/geocoding/start" target="_blank">Google Geocoding</a> API Key
+- Sign up for a free <a href="https://darksky.net/dev" target="_blank">Dark Sky</a> API Key
+- Create a file named .env and add:
 ```sh
 KEY_GEO = 'Geocoding API Key'
 KEY_WEATHER = 'Dark Sky API Key'
 ```
 (These API Keys are sensitive information, so make sure they won't be committed to public view. My .env file is protected from being committed by listing it in my .gitignore file)
 
-
-
-
-
-
-
-
+## Development Setup
+Install the Dependencies
+```sh
+npm install
+```
