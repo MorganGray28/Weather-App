@@ -26,7 +26,9 @@
     width: 118px;
     height:200px;
     position: relative;
-    background: linear-gradient(0deg, rgba(0,162,255,0) 35%, #0B089A 100%);
+    // background: linear-gradient(0deg, rgba(0,162,255,0) 35%, #0B089A 100%);
+    // background: linear-gradient(0deg, rgba(57, 154, 224, 0.38) 35%, rgba(142, 228, 255, 0.38) 100%);
+    background: linear-gradient(0deg, rgba(57, 154, 224, 0) 35%, rgb(41, 105, 247) 100%);
     border-radius: 80px;
     display: flex;
     flex-direction: column;
