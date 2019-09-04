@@ -1,21 +1,21 @@
-<h1 align="center">Weatherly</h1>
+<h1 align="center">Weather App</h1>
 <div align="center">
     <strong>Yes, I know. Another Weather App</strong>
 </div>
 
-<div align="center">Utilizes Google GeoCoding API and the Dark Sky API to give a weekly, hourly, and current weather forecast</div>
+<div align="center">Utilizes Google's GeoCoding API and the Dark Sky API to give a current, hourly, and weekly weather forecast for a given location</div>
 
 <div align="center">
     <h3>
-        <a href="https://secret-harbor-25621.herokuapp.com/">
+        <a href="https://secret-harbor-25621.herokuapp.com/" target="_blank">
             Live Example
         </a>
         <span>|</span>
-        <a href="https://developers.google.com/maps/documentation/geocoding/start">
+        <a href="https://developers.google.com/maps/documentation/geocoding/start" target="_blank">
             Google Geocoding API
         </a>
         <span>|</span>
-        <a href="https://darksky.net/dev">
+        <a href="https://darksky.net/dev" target="_blank">
             Dark Sky API 
         </a>
 </div>
@@ -23,7 +23,7 @@
 ![Screenshot of weather forecast example](/public/img/Screenshot.png)
 
 ## Table of Contents
--[Development Setup](#development-setup)
+- [Development Setup](#development-setup)
 
 
 
@@ -33,9 +33,21 @@ Install the Dependencies
 npm install
 ```
 
-<a href="https://developers.google.com/maps/documentation/geocoding/start">
-    Get a Google Geocoding API Key
-</a>
+Get a <a href="https://developers.google.com/maps/documentation/geocoding/start" target="_blank">Google Geocoding</a> API Key
+
+Sign up for a free <a href="https://darksky.net/dev" target="_blank">Dark Sky</a> API Key
+
+Create a file named .env and add:
+
+```sh
+KEY_GEO = 'Geocoding API Key'
+KEY_WEATHER = 'Dark Sky API Key'
+```
+(These API Keys are sensitive information, so make sure they won't be committed to public view. My .env file is protected from being committed by listing it in my .gitignore file)
+
+
+
+
 
 
 

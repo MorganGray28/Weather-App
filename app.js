@@ -12,7 +12,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, '/public/html.html'));
+    res.sendFile(path.join(__dirname, '/public/index.html'));
 });
 
 app.get('/geolocation', async (req, res) => {
