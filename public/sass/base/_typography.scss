@@ -1,3 +1,102 @@
 body {
-    font-family: 'Lato';    
+    font-family: 'Lato', sans-serif;    
+}
+
+.curr-address {
+    font-size: 40px;
+    font-weight: 300;
+
+    @include bp(tab-port) {
+        font-size: 34px;
+    }
+}
+
+.curr-condition {
+    
+    &-sum {
+        font-size: 48px;
+        font-weight: 100;
+
+        @include bp(tab-port) {
+            font-size: 28px;
+        }
+    }
+}
+
+#temp {
+    font-size: 150px;
+    font-weight: 100;
+
+    @include bp(tab-port) {
+        font-size: 130px;
+    }
+}
+
+.curr-temp_units {
+    font-size: 25px;
+}
+
+.curr-conditions {
+    font-weight: 100;
+    font-size: 35px;
+
+    & div {
+        font-weight: 300;
+    }
+
+    @include bp(tab-port) {
+        font-size: 27px;
+    }
+}
+
+.hourly-temp {
+    font-weight: 300;
+    font-size: 25px;
+
+    @include bp(tab-port) {
+        font-size: 22px;
+    }
+}
+
+.hourly-time {
+    font-weight: 300;
+    font-size: 21px;
+}
+
+.search {
+    & h1 {
+        font-weight: 300;
+        font-size: 40px;
+
+        @include bp(tab-port) {
+            font-size: 37px;
+        }
+    }
+}
+
+.search-input {
+    font-weight: 300;
+    font-size: 24px;
+
+    &::placeholder {
+        font-weight: 100;
+        letter-spacing: 0.03em;
+    }
+}
+
+.weekly-temp-high {
+    font-weight: 300;
+    font-size: 25px;
+}
+.weekly-temp-low {
+    font-weight: 300;
+    font-size: 25px;
+}
+.weekly-day {
+    font-weight: 300;
+    font-size: 31px;
+
+    @include bp(tab-port) {
+        font-size: 26px;
+    }
 }

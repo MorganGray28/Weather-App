@@ -1,12 +1,15 @@
 .hourly-container {
     box-sizing: border-box;
-    padding-bottom: 20px;
     width: 100%;
     padding: 0 5% 25px 5%;
     display: flex;
     justify-content: space-around;
     align-items: center;
     border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+
+    @include bp(tab-port) {
+        padding-bottom: 65px;
+    }
 }
 
 .hourly {
@@ -18,18 +21,20 @@
     align-items: center;
 }
 .hourly-temp {
-    font-weight: 300;
-    font-size: 25px;
     color: #D2EFFF;
 }
+
 .hourly-time {
-    font-style: normal;
-    font-weight: 300;
-    font-size: 21px;
     color: white;
     padding-top: 7px;
 }
+
 .hourly-icon img {
     height: 50px;
     width: 50px;
+
+    @include bp(tab-port) {
+        width: 42px;
+        height: 42px;
+    }
 }

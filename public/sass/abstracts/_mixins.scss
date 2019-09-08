@@ -4,6 +4,6 @@
     }
 
     @if $dev == phone {
-        @media (max-width: 600px) { @content };
+        @media (max-width: 590px) { @content };
     }
 }

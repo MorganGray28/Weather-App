@@ -34,7 +34,80 @@ body {
   background: linear-gradient(335.58deg, #061d88 -1.43%, #4475df 103.38%); }
 
 body {
-  font-family: 'Lato'; }
+  font-family: 'Lato', sans-serif; }
+
+.curr-address {
+  font-size: 40px;
+  font-weight: 300; }
+  @media (max-width: 900px) {
+    .curr-address {
+      font-size: 34px; } }
+
+.curr-condition-sum {
+  font-size: 48px;
+  font-weight: 100; }
+  @media (max-width: 900px) {
+    .curr-condition-sum {
+      font-size: 28px; } }
+
+#temp {
+  font-size: 150px;
+  font-weight: 100; }
+  @media (max-width: 900px) {
+    #temp {
+      font-size: 130px; } }
+
+.curr-temp_units {
+  font-size: 25px; }
+
+.curr-conditions {
+  font-weight: 100;
+  font-size: 35px; }
+  .curr-conditions div {
+    font-weight: 300; }
+  @media (max-width: 900px) {
+    .curr-conditions {
+      font-size: 27px; } }
+
+.hourly-temp {
+  font-weight: 300;
+  font-size: 25px; }
+  @media (max-width: 900px) {
+    .hourly-temp {
+      font-size: 22px; } }
+
+.hourly-time {
+  font-weight: 300;
+  font-size: 21px; }
+
+.search h1 {
+  font-weight: 300;
+  font-size: 40px; }
+  @media (max-width: 900px) {
+    .search h1 {
+      font-size: 37px; } }
+
+.search-input {
+  font-weight: 300;
+  font-size: 24px; }
+  .search-input::placeholder {
+    font-weight: 100;
+    letter-spacing: 0.03em; }
+
+.weekly-temp-high {
+  font-weight: 300;
+  font-size: 25px; }
+
+.weekly-temp-low {
+  font-weight: 300;
+  font-size: 25px; }
+
+.weekly-day {
+  font-weight: 300;
+  font-size: 31px; }
+  @media (max-width: 900px) {
+    .weekly-day {
+      font-size: 26px; } }
 
 .hidden {
   opacity: 0;
@@ -43,22 +116,24 @@ body {
 .curr-address {
   width: 70%;
   margin: 0 auto;
-  padding: 30px 0;
+  padding: 30px 0 20px 0;
   text-align: center;
-  color: #e6eafb;
-  font-family: 'Lato';
-  font-size: 40px;
-  font-weight: 300; }
+  color: #e6eafb; }
+  @media (max-width: 900px) {
+    .curr-address {
+      padding: 40px 0 20px 0; } }
 
 .current-display {
-  margin: 0 auto;
+  margin: 0 auto 10px auto;
   display: flex;
-  width: 90%;
-  justify-content: space-around; }
+  width: 90%; }
+  @media (max-width: 900px) {
+    .current-display {
+      margin: 0 auto 60px auto; } }
 
 /* Left Side of Current Display */
 .left {
-  width: 40%; }
+  width: 50%; }
 
 .curr-condition {
   display: flex;
@@ -66,14 +141,14 @@ body {
   align-items: center; }
   .curr-condition-sum {
     margin: 0 0 0 25px;
-    color: white;
-    font-size: 48px;
-    font-weight: 100; }
+    color: white; }
+  @media (max-width: 900px) {
+    .curr-condition-icon {
+      width: 80px;
+      height: 80px; } }
 
 #temp {
   margin: 0;
-  font-size: 150px;
-  font-weight: 100;
   color: white; }
 
 .curr-temp {
@@ -83,8 +158,7 @@ body {
 
 .curr-temp_units {
   margin-top: 30px;
-  margin: 35px 0 0 20px;
-  font-size: 25px; }
+  margin: 35px 0 0 20px; }
 
 .temp-units {
   color: #75c3ff;
@@ -99,23 +173,25 @@ body {
   width: 50%; }
 
 .curr-conditions {
-  font-weight: 100;
-  color: #d3daf3;
-  font-family: "Lato";
-  font-size: 35px; }
+  color: #d3daf3; }
 
 .curr-conditions div {
-  padding-top: 27px; }
+  padding-top: 38px; }
+  @media (max-width: 900px) {
+    .curr-conditions div {
+      padding: 34px 0 0 15px; } }
 
 .hourly-container {
   box-sizing: border-box;
-  padding-bottom: 20px;
   width: 100%;
   padding: 0 5% 25px 5%;
   display: flex;
   justify-content: space-around;
   align-items: center;
   border-bottom: 1px solid rgba(255, 255, 255, 0.5); }
+  @media (max-width: 900px) {
+    .hourly-container {
+      padding-bottom: 65px; } }
 
 .hourly {
   width: 120px;
@@ -126,20 +202,19 @@ body {
   align-items: center; }
 
 .hourly-temp {
-  font-weight: 300;
-  font-size: 25px;
   color: #D2EFFF; }
 
 .hourly-time {
-  font-style: normal;
-  font-weight: 300;
-  font-size: 21px;
   color: white;
   padding-top: 7px; }
 
 .hourly-icon img {
   height: 50px;
   width: 50px; }
+  @media (max-width: 900px) {
+    .hourly-icon img {
+      width: 42px;
+      height: 42px; } }
 
 .header {
   height: 50px;
@@ -154,28 +229,26 @@ body {
   .search h1 {
     width: 500px;
     color: #d6d6d6;
-    font-weight: 100;
-    font-size: 40px;
     text-align: center; }
 
 .search-input {
   width: 500px;
   height: 45px;
-  font-weight: 300;
-  font-family: "Lato";
   box-sizing: border-box;
   padding-left: 18px;
   border-radius: 57px;
   border: 1px solid rgba(255, 255, 255, 0.7);
   background-color: rgba(0, 0, 0, 0);
-  font-size: 24px;
   color: white; }
+  @media (max-width: 900px) {
+    .search-input {
+      width: 480px;
+      height: 39px;
+      margin-left: 10px; } }
   .search-input:focus {
     outline: none; }
   .search-input::placeholder {
-    font-weight: 100;
-    color: #d6d6d6;
-    letter-spacing: 0.03em; }
+    color: #d6d6d6; }
 
 .search-btn {
   background-color: rgba(0, 0, 0, 0);
@@ -224,22 +297,23 @@ body {
   justify-content: center;
   align-items: center;
   animation: daySlideUp 0.4s cubic-bezier(0, 0.1, 0.2, 0.8); }
+  @media (max-width: 900px) {
+    .weekly-active {
+      width: 100px; } }
 
 .weekly-icon img {
   height: 75px;
   width: 75px; }
+  @media (max-width: 900px) {
+    .weekly-icon img {
+      width: 55px;
+      height: 55px; } }
 
 .weekly-temp-high {
-  font-weight: 300;
-  font-size: 25px;
   color: #FFEC87; }
 
 .weekly-temp-low {
-  font-weight: 300;
-  font-size: 25px;
   color: #D2EFFF; }
 
 .weekly-day {
-  font-weight: 300;
-  font-size: 31px;
   color: white; }

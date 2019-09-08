@@ -13,8 +13,6 @@
     & h1 {
         width: 500px;
         color: rgb(214, 214, 214);
-        font-weight: 100;
-        font-size: 40px;
         text-align: center;
     }
 }
@@ -22,25 +20,28 @@
 .search-input {
     width: 500px;
     height: 45px;
-    font-weight: 300;
-    font-family: "Lato";
     box-sizing: border-box;
     padding-left: 18px;
     border-radius: 57px;
     border: 1px solid rgba(255, 255, 255, 0.7);
     background-color: rgba(0, 0, 0, 0);
-    font-size: 24px;
     color: white;
+
+    @include bp(tab-port) {
+        width: 480px;
+        height: 39px;
+        margin-left: 10px;
+    }
 
     &:focus {
         outline: none;
     }
+
     &::placeholder {
-        font-weight: 100;
         color: rgb(214, 214, 214);
-        letter-spacing: 0.03em;
     }
 }
+
 .search-btn {
     background-color: rgba(0, 0, 0, 0);
     border: none;
